@@ -49,7 +49,7 @@ namespace prueba
             Obj1 = obj1;
             Obj2 = obj2;
             Obj3 = obj3;
-            Fecha = fecha:
+            Fecha = fecha;
         }
         #endregion
 
