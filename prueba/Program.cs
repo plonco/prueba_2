@@ -37,7 +37,7 @@ namespace prueba
                     return true;
                 case "2":
                     Console.Clear();
-                    BuscarProducto(du);
+                    //BuscarProducto(du);
                     return true;
                 case "3":
                     Console.Clear();
@@ -63,9 +63,8 @@ namespace prueba
         {
             // Menu 1
 
-            string strRegistro, nombre, strValor, desc, obj1, obj2, obj3, dia, mes, anio, fecha;
-            int registro, valor;
-
+            string strRegistro, nombre, strValor, desc, obj1, obj2, obj3, strDia, strMes, strAnio, strFecha;
+            int registro, valor, dia, mes, anio;
             try
             {
                 Console.WriteLine("               Ingresando Datos de Producto\n\n\n");
@@ -98,11 +97,29 @@ namespace prueba
                 Console.Write("Objeto a intercambio 2                 : "); obj2 = Console.ReadLine();
                 Console.Write("Objeto a intercambio 3                 : "); obj3 = Console.ReadLine();
                 Console.WriteLine("////// Fecha //////");
-                Console.Write("dia                 : "); dia = Console.ReadLine();
-                Console.Write("mes                 : "); mes = Console.ReadLine();
-                Console.Write("año                 : "); anio = Console.ReadLine();
+                Console.Write("dia                 : "); strDia = Console.ReadLine();
+                if (!int.TryParse(strDia, out dia))
+                {
+                    Console.WriteLine("El valor debe ser númerico...");
+                    Console.ReadKey();
+                    return false;
+                }
+                Console.Write("mes                 : "); strMes = Console.ReadLine();
+                if (!int.TryParse(strMes, out mes))
+                {
+                    Console.WriteLine("El valor debe ser númerico...");
+                    Console.ReadKey();
+                    return false;
+                }
+                Console.Write("año                 : "); strAnio = Console.ReadLine();
+                if (!int.TryParse(strAnio, out anio))
+                {
+                    Console.WriteLine("El valor debe ser númerico...");
+                    Console.ReadKey();
+                    return false;
+                }
                 DateTime fecha = new DateTime(anio, mes, dia);
-                fecha= fecha.ToString();
+                strFecha = fecha.ToString();
             }
             catch (Exception ex)
             {
@@ -112,8 +129,7 @@ namespace prueba
                 Console.ReadKey();
                 return false;
             }
-
-            du.AgregarProducto(registro, nombre, valor, desc, obj1, obj2, obj3, fecha);
+            du.AgregarProducto(registro, nombre, valor, desc, obj1, obj2, obj3, strFecha);
             return true;
 
         }
