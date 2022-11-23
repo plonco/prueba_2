@@ -31,7 +31,7 @@ namespace prueba
         {
             string pathFile = AppDomain.CurrentDomain.BaseDirectory + "excel.xlsx";
             SLDocument slDocument = new SLDocument();
-
+            
             System.Data.DataTable dt = new System.Data.DataTable();
 
             dt.Columns.Add("Registro", typeof(int));
@@ -43,8 +43,10 @@ namespace prueba
             dt.Columns.Add("Objeto a intercambio 3", typeof(string));
             dt.Columns.Add("Fecha", typeof(string));
 
-            
-            dt.Rows.Add(registro, nombre, valor, desc, obj1, obj2, obj3, fecha);
+            foreach (Producto producto in productos)
+            {
+                dt.Rows.Add(registro, nombre, valor, desc, obj1, obj2, obj3, fecha);
+            }
 
             slDocument.ImportDataTable(1, 1, dt, true);
             slDocument.SaveAs(pathFile);
