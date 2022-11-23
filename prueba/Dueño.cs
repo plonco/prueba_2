@@ -19,9 +19,9 @@ namespace prueba
         }
         #endregion
         #region Metodos
-        public void AgregarProducto(int registro, string nombre, int valor, string desc, string obj1, string obj2, string obj3)
+        public void AgregarProducto(int registro, string nombre, int valor, string desc, string obj1, string obj2, string obj3, string fecha)
         {
-            productos.Add(new Producto(registro, nombre, valor, desc, obj1, obj2, obj3));
+            productos.Add(new Producto(registro, nombre, valor, desc, obj1, obj2, obj3, fecha));
         }
 
         public Producto BuscarProductos(int registro)
@@ -29,6 +29,8 @@ namespace prueba
             Producto prod = productos.Find(prod=> prod.Registro.Equals(registro));
             return prod;
         }
+
+
         #endregion
         #region Constructores
         public Dueño()

@@ -20,6 +20,7 @@ namespace prueba
         public string Obj1 { get; set; }
         public string Obj2 { get; set; }
         public string Obj3 { get; set; }
+        public string Fecha { get; set; }
 
 
         public int Valor
@@ -33,13 +34,13 @@ namespace prueba
         public string DatosProducto()
         {
             return "Nombre: " + Nombre + ", valor: " + Valor + ", Descripción: " + Desc +
-                ", Objeto de intercambio 1: " + Obj1 + ", Objeto de intercambio 2: " + Obj2 + ", Objeto de intercambio 3: " + Obj3;
+                ", Objeto de intercambio 1: " + Obj1 + ", Objeto de intercambio 2: " + Obj2 + ", Objeto de intercambio 3: " + Obj3 + ", Fecha: " + Fecha;
         }
         #endregion
 
         #region Constructores
         public Producto() { }
-        public Producto(int registro, string nombre, int valor, string desc, string obj1, string obj2, string obj3)
+        public Producto(int registro, string nombre, int valor, string desc, string obj1, string obj2, string obj3, string fecha)
         {
             Registro = registro;
             Nombre = nombre;
@@ -48,6 +49,7 @@ namespace prueba
             Obj1 = obj1;
             Obj2 = obj2;
             Obj3 = obj3;
+            Fecha = fecha:
         }
         #endregion
 

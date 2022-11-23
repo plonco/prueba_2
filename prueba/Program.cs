@@ -11,8 +11,6 @@ namespace prueba
 
             Dueño dueño = new Dueño(1, "Pedro", "Morales");
 
-            CargarDatos(dueño);
-
             bool menu = true;
             while (menu)
             {
@@ -25,12 +23,11 @@ namespace prueba
             Console.Clear();
             Console.WriteLine("       MENU EL TRUEQUE\n");
             Console.WriteLine("1 = Agregar Producto");
-            Console.WriteLine("2 = Eliminar Producto");
-            Console.WriteLine("3 = Buscar Producto");
-            Console.WriteLine("4 = Mostrar Dueños");
-            Console.WriteLine("5 = Hacer Trueque");
-            Console.WriteLine("6 = Salir\n\n\n");
-            Console.Write("Escriba el numero de una opcion del 1 al 6 y presione Enter....");
+            Console.WriteLine("2 = Buscar Producto antiguo");
+            Console.WriteLine("3 = ofertas");
+            Console.WriteLine("4 = Hacer Trueque");
+            Console.WriteLine("5 = Salir\n\n\n");
+            Console.Write("Escriba el numero de una opcion del 1 al 5 y presione Enter....");
 
             switch (Console.ReadLine())
             {
@@ -40,41 +37,33 @@ namespace prueba
                     return true;
                 case "2":
                     Console.Clear();
-                    //EliminarProducto(du);
+                    BuscarProducto(du);
                     return true;
                 case "3":
                     Console.Clear();
-                    BuscarProducto(du);
+                    //ofertas(du);
+                    Console.ReadKey();
                     return true;
                 case "4":
                     Console.Clear();
-                    //VerDueño(eq);
-                    Console.ReadKey();
-                    return true;
-                case "5":
-                    Console.Clear();
                     //HacerTrueque(du);
                     return true;
-                case "6":
+                case "5":
                     return false;
                 default:
                     Console.Clear();
-                    Console.WriteLine("Digite una tecla del 1 al 6....");
+                    Console.WriteLine("Digite una tecla del 1 al 5....");
                     Console.ReadKey();
                     return true;
             }
 
         }
-        static void CargarDatos(Dueño du)
-        {
-            //Producto jdr1 = new Producto(11, );
-            //du.AgregarProducto(jdr1);
-        }
+
         static bool AgregarProducto(Dueño du)
         {
             // Menu 1
 
-            string strRegistro, nombre, strValor, desc, obj1, obj2, obj3;
+            string strRegistro, nombre, strValor, desc, obj1, obj2, obj3, dia, mes, anio, fecha;
             int registro, valor;
 
             try
@@ -108,7 +97,12 @@ namespace prueba
                 Console.Write("Objeto a intercambio 1                 : "); obj1 = Console.ReadLine();
                 Console.Write("Objeto a intercambio 2                 : "); obj2 = Console.ReadLine();
                 Console.Write("Objeto a intercambio 3                 : "); obj3 = Console.ReadLine();
-
+                Console.WriteLine("////// Fecha //////");
+                Console.Write("dia                 : "); dia = Console.ReadLine();
+                Console.Write("mes                 : "); mes = Console.ReadLine();
+                Console.Write("año                 : "); anio = Console.ReadLine();
+                DateTime fecha = new DateTime(anio, mes, dia);
+                fecha= fecha.ToString();
             }
             catch (Exception ex)
             {
@@ -119,7 +113,7 @@ namespace prueba
                 return false;
             }
 
-            du.AgregarProducto(registro, nombre, valor, desc, obj1, obj2, obj3);
+            du.AgregarProducto(registro, nombre, valor, desc, obj1, obj2, obj3, fecha);
             return true;
 
         }
