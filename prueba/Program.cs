@@ -1,15 +1,18 @@
-﻿using System;
+﻿using SpreadsheetLight;
+using System;
 using System.Collections.Generic;
 
 namespace prueba
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
 
             Dueño dueño = new Dueño(1, "Pedro", "Morales");
+
+            CargarDatos(dueño);
 
             bool menu = true;
             while (menu)
@@ -129,15 +132,45 @@ namespace prueba
                 Console.ReadKey();
                 return false;
             }
-            du.AgregarProducto(registro, nombre, valor, desc, obj1, obj2, obj3, strFecha);
+            du.AgregarProducto2(registro, nombre, valor, desc, obj1, obj2, obj3, strFecha);
             return true;
 
         }
         static bool BuscarProducto(Dueño du)
         {
+            Console.WriteLine("////// productos antiguos //////");
             du.BuscarProductoAntiguo();
             Console.ReadKey();
             return true;
+        }
+        static void CargarDatos(Dueño du)
+        {
+            string nombre, desc, obj1, obj2, obj3, fecha;
+            int registro, valor;
+            string pathFile = AppDomain.CurrentDomain.BaseDirectory + "excel.xlsx";
+            SLDocument slDocument = new SLDocument(pathFile);
+
+            int valore = 2;
+            while (!string.IsNullOrEmpty(slDocument.GetCellValueAsString(valore, 1)))
+            {
+                registro = Int32.Parse(slDocument.GetCellValueAsString(valore, 1));
+                nombre = slDocument.GetCellValueAsString(valore, 2);
+                valor = Int32.Parse(slDocument.GetCellValueAsString(valore, 3));
+                desc = slDocument.GetCellValueAsString(valore, 4);
+                obj1 = slDocument.GetCellValueAsString(valore, 5);
+                obj2 = slDocument.GetCellValueAsString(valore, 6);
+                obj3 = slDocument.GetCellValueAsString(valore, 7);
+                fecha = slDocument.GetCellValueAsString(valore, 8);
+
+                du.AgregarProducto(registro, nombre, valor, desc, obj1, obj2, obj3, fecha);
+                valore++;
+            }
+
+
+
+
+
+
         }
     }
 }
