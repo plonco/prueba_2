@@ -123,9 +123,6 @@ namespace prueba
             return true;
 
         }
-        static void BuscarProducto(Dueño du)
-        {
-            
-    }
+        
     }
 }
