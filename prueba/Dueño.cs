@@ -29,7 +29,15 @@ namespace prueba
             Producto prod = productos.Find(prod=> prod.Registro.Equals(registro));
             return prod;
         }
-
+        public void BuscarProductoAntiguo()
+        {
+            Producto[] antiguo = (from num in productos
+                          where num.Registro >= 0 
+                          orderby num.Fecha 
+                          select num).ToArray();
+            foreach (Producto a in antiguo)
+                Console.WriteLine(a.Nombre + " " + a.Fecha);
+        }
 
         #endregion
         #region Constructores

@@ -23,7 +23,7 @@ namespace prueba
             Console.Clear();
             Console.WriteLine("       MENU EL TRUEQUE\n");
             Console.WriteLine("1 = Agregar Producto");
-            Console.WriteLine("2 = Buscar Producto antiguo");
+            Console.WriteLine("2 = Ver Productos antiguos");
             Console.WriteLine("3 = ofertas");
             Console.WriteLine("4 = Hacer Trueque");
             Console.WriteLine("5 = Salir\n\n\n");
@@ -37,7 +37,7 @@ namespace prueba
                     return true;
                 case "2":
                     Console.Clear();
-                    //BuscarProducto(du);
+                    BuscarProducto(du);
                     return true;
                 case "3":
                     Console.Clear();
@@ -133,6 +133,11 @@ namespace prueba
             return true;
 
         }
-        
+        static bool BuscarProducto(Dueño du)
+        {
+            du.BuscarProductoAntiguo();
+            Console.ReadKey();
+            return true;
+        }
     }
 }
