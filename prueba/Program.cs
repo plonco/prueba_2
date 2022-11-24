@@ -100,10 +100,17 @@ namespace prueba
                 Console.Write("Objeto a intercambio 2                 : "); obj2 = Console.ReadLine();
                 Console.Write("Objeto a intercambio 3                 : "); obj3 = Console.ReadLine();
                 Console.WriteLine("////// Fecha //////");
-                Console.Write("dia                 : "); strDia = Console.ReadLine();
+                Console.Write("Día                 : "); strDia = Console.ReadLine();
+                
                 if (!int.TryParse(strDia, out dia))
                 {
                     Console.WriteLine("El valor debe ser númerico...");
+                    Console.ReadKey();
+                    return false;
+                }
+                if(dia <=0 || dia >= 31)
+                {
+                    Console.WriteLine("Día incorrecto...");
                     Console.ReadKey();
                     return false;
                 }
@@ -114,10 +121,22 @@ namespace prueba
                     Console.ReadKey();
                     return false;
                 }
+                if (mes <= 0 || mes >= 12)
+                {
+                    Console.WriteLine("Mes incorrecto...");
+                    Console.ReadKey();
+                    return false;
+                }
                 Console.Write("año                 : "); strAnio = Console.ReadLine();
                 if (!int.TryParse(strAnio, out anio))
                 {
                     Console.WriteLine("El valor debe ser númerico...");
+                    Console.ReadKey();
+                    return false;
+                }
+                if (anio <= 0)
+                {
+                    Console.WriteLine("Año incorrecto...");
                     Console.ReadKey();
                     return false;
                 }
