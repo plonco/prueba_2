@@ -63,7 +63,7 @@ namespace prueba
         public void BuscarProductoAntiguo()
         {
             Producto[] antiguo = (from num in productos
-                          where num.Registro!=null
+                          where num.Registro >=0
                           orderby num.Fecha 
                           select num).ToArray();
             foreach (Producto a in antiguo)
