@@ -69,7 +69,38 @@ namespace prueba
             foreach (Producto a in antiguo)
                 Console.WriteLine(a.Nombre + " " + a.Fecha);
         }
-
+        public void Ofertas()
+        {
+            double nume = 0;
+            Producto[] ofer = (from num in productos
+                                  where num.Registro >=0
+                                  orderby num.Fecha
+                                  select num).ToArray();
+            foreach (Producto a in ofer)
+            {
+                if(a.Valor >= 15000 && a.Valor <= 30000)
+                {
+                    nume = (a.Valor)*0.3;
+                    Console.WriteLine(a.Nombre + " " + Convert.ToInt32(nume) + " Descuento 30%"); ;
+                }else if(a.Valor >=10000 && a.Valor <= 14999)
+                {
+                    nume = (a.Valor)*0.2;
+                    Console.WriteLine(a.Nombre + " " + Convert.ToInt32(nume) + " " + " Descuento 20%");
+                }
+                else if(a.Valor >=5000 && a.Valor <= 9999)
+                {
+                    nume = (a.Valor)*0.1;
+                    Console.WriteLine(a.Nombre + " " + Convert.ToInt32(nume) + " " + " Descuento 10%");
+                }
+                else
+                {
+                    nume = a.Valor;
+                    Console.WriteLine(a.Nombre + " " + Convert.ToInt32(nume) + " " + "descuento 0%");
+                }
+                
+            }
+                
+        }
         #endregion
         #region Constructores
         public Dueño()

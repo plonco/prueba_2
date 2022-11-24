@@ -44,7 +44,7 @@ namespace prueba
                     return true;
                 case "3":
                     Console.Clear();
-                    //ofertas(du);
+                    Ofertas(du);
                     Console.ReadKey();
                     return true;
                 case "4":
@@ -108,7 +108,7 @@ namespace prueba
                     Console.ReadKey();
                     return false;
                 }
-                if(dia <=0 || dia >= 31)
+                if(dia <=0 || dia > 31)
                 {
                     Console.WriteLine("Día incorrecto...");
                     Console.ReadKey();
@@ -121,7 +121,7 @@ namespace prueba
                     Console.ReadKey();
                     return false;
                 }
-                if (mes <= 0 || mes >= 12)
+                if (mes <= 0 || mes > 12)
                 {
                     Console.WriteLine("Mes incorrecto...");
                     Console.ReadKey();
@@ -164,6 +164,13 @@ namespace prueba
             Console.ReadKey();
             return true;
         }
+        static bool Ofertas(Dueño du)
+        {
+            Console.WriteLine("////// Ofertas //////");
+            du.Ofertas();
+            Console.ReadKey();
+            return true;
+        }
         static void CargarDatos(Dueño du)
         {
             string nombre, desc, obj1, obj2, obj3, fecha;
@@ -188,11 +195,6 @@ namespace prueba
                 du.AgregarProducto(registro, nombre, valor, desc, obj1, obj2, obj3, fecha);
                 valore++;
             }
-
-
-
-
-
 
         }
     }
