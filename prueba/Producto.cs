@@ -8,16 +8,26 @@ namespace prueba
     {
         #region propiedades
 
-        public string Registro {get; set; }
+        private int _registro;
+        public int Registro
+        {
+            get { return _registro; }
+            set { if (value >= 0) { _registro = value; } }
+        }
         public string Nombre { get; set; }
-        public string Valor { get; set; }
+        private int _valor;
         public string Desc { get; set; }
         public string Obj1 { get; set; }
         public string Obj2 { get; set; }
         public string Obj3 { get; set; }
         public string Fecha { get; set; }
 
-
+        public int Valor
+        {
+            get { return _valor; }
+            set { if (value >= 0) { _valor = value; } }
+        }
+        
         #endregion
 
         #region metodos
@@ -29,7 +39,7 @@ namespace prueba
 
         #region Constructores
         public Producto() { }
-        public Producto(string registro, string nombre, string valor, string desc, string obj1, string obj2, string obj3, string fecha)
+        public Producto(int registro, string nombre, int valor, string desc, string obj1, string obj2, string obj3, string fecha)
         {
             Registro = registro;
             Nombre = nombre;

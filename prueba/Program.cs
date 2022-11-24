@@ -133,7 +133,7 @@ namespace prueba
                 return false;
             }
             
-            du.AgregarProducto2(registro.ToString(), nombre, valor.ToString(), desc, obj1, obj2, obj3, strFecha);
+            du.AgregarProducto2(registro, nombre, valor, desc, obj1, obj2, obj3, strFecha);
             
             return true;
 
@@ -147,18 +147,18 @@ namespace prueba
         }
         static void CargarDatos(Dueño du)
         {
-            string registro,nombre, valor, desc, obj1, obj2, obj3, fecha;
+            string nombre, desc, obj1, obj2, obj3, fecha;
+            int registro, valor;
             string pathFile = AppDomain.CurrentDomain.BaseDirectory + "excel.xlsx";
             SLDocument slDocument = new SLDocument(pathFile);
-            System.Data.DataTable dt = new System.Data.DataTable();
-            System.Data.DataRow dr;
+            
             int valore = 2;
 
             while (!string.IsNullOrEmpty(slDocument.GetCellValueAsString(valore, 1)))
             {
-                registro = slDocument.GetCellValueAsString(valore, 1);
+                registro = Int32.Parse(slDocument.GetCellValueAsString(valore, 1));
                 nombre = slDocument.GetCellValueAsString(valore, 2);
-                valor = slDocument.GetCellValueAsString(valore, 3);
+                valor = Int32.Parse(slDocument.GetCellValueAsString(valore, 3));
                 desc = slDocument.GetCellValueAsString(valore, 4);
                 obj1 = slDocument.GetCellValueAsString(valore, 5);
                 obj2 = slDocument.GetCellValueAsString(valore, 6);
