@@ -48,7 +48,7 @@ namespace prueba
             Console.ReadLine();
             foreach (Producto produ in productos)
             {
-                dt.Rows.Add(produ.Registro, produ.Nombre,produ.Desc, produ.Obj1, produ.Obj2, produ.Obj3, produ.Fecha);
+                dt.Rows.Add(produ.Registro, produ.Nombre,produ.Valor, produ.Desc, produ.Obj1, produ.Obj2, produ.Obj3, produ.Fecha);
             }
 
             dt.Rows.Add(registro, nombre, valor, desc, obj1, obj2, obj3, fecha);
