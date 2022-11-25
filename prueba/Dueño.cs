@@ -105,7 +105,7 @@ namespace prueba
             }
                 
         }
-        public void HacerTrueque(string coincidencia)
+        public bool HacerTrueque(string coincidencia)
         {
          
             Producto[] trueque = (from num in productos
@@ -116,15 +116,19 @@ namespace prueba
             {
                 if (a.Obj1.Equals(coincidencia) || a.Obj2.Equals(coincidencia) || a.Obj3.Equals(coincidencia))
                 {
-                    Console.WriteLine(a.Registro+" "+a.Nombre+" "+a.Valor+" " +"Coincide");
+                    Console.WriteLine("Coincide \n"+a.Registro+" "+a.Nombre+" "+a.Valor+" "+"Intercambio1: " +a.Obj1+  "Intercambio2: " +a.Obj2+  "Intercambio3: " +a.Obj3+"\n----------------------");
+                    return false;
                 }
                 else
                 {
-                    Console.WriteLine(a.Registro + " " + a.Nombre + " " + a.Valor + " " + "No Coincide");
+                    Console.WriteLine("Sin coincidencias");
+                    Console.ReadKey();
+                    return true;
                 }
               
 
             }
+            return false;
         }
         public void HacerTrueque2(string registro1,string registro2 )
         {
@@ -154,6 +158,16 @@ namespace prueba
             foreach(Producto prod in productos)
             {
                 if (prod.Registro == Int32.Parse(registro1))
+                {
+                    productos.Remove(prod);
+                    break;
+                }
+
+            }
+            dt.Rows.Find(registro2).Delete();
+            foreach (Producto prod in productos)
+            {
+                if (prod.Registro == Int32.Parse(registro2))
                 {
                     productos.Remove(prod);
                     break;

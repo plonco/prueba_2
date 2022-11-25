@@ -174,30 +174,42 @@ namespace prueba
         static bool HacerTrueque(Dueño du)
         {
             string coincidencia,registro1,registro2,confirmacion;
-            
-        
+
             Console.WriteLine("////// Trueques //////");
-            du.BuscarProductoAntiguo();
-            
-            Console.Write("Ingrese Nombre y Numero de Registro para ver sus coincidencias de trueque.   Nombre:");coincidencia= Console.ReadLine();
-            Console.Write("Numero de Registro:");registro1= Console.ReadLine();
-            du.HacerTrueque(coincidencia);
-            Console.Write("Ingrese Numero de Registro a cambiar:"); registro2 = Console.ReadLine();
-            Console.Write("¿Esta seguro de realizar el trueque?.Los registros cambiados seran eliminados.1-Confirmar 2-Cancelar");confirmacion= Console.ReadLine();
-            if (confirmacion.Equals("1"))
+            Console.Write("Ingrese Nombre del objeto para ver sus coincidencias de trueque.   Nombre:");coincidencia= Console.ReadLine();
+            if (du.HacerTrueque(coincidencia)!= false)
             {
-              du.HacerTrueque2(registro1, registro2);
-              Console.ReadKey();
-              return true;
-              
-            }else if(confirmacion.Equals("2"))
-            {
-                Console.ReadKey();
+                
                 return true;
+            }
+            Console.Write("Ingrese Numero de Registro del primer objeto a cambiar:"); registro1 = Console.ReadLine();
+            du.BuscarProductoAntiguo();
+            Console.Write("Ingrese Numero de Registro del segundo número a cambiar:"); registro2 = Console.ReadLine();
+            if (du.BuscarProductos(Int32.Parse(registro2)) != null) // Se Valida que el registro no exista en el arrelgo de los Equipos
+            {
+                Console.Write("¿Esta seguro de realizar el trueque?.Los registros cambiados seran eliminados.1-Confirmar 2-Cancelar"); confirmacion = Console.ReadLine();
+                if (confirmacion.Equals("1"))
+                {
+                    du.HacerTrueque2(registro1, registro2);
+                    Console.ReadKey();
+                    return true;
+
+                }
+                else if (confirmacion.Equals("2"))
+                {
+                    Console.ReadKey();
+                    return true;
+                }
+                else
+                {
+                    Console.Write("Opcion no valida"); registro2 = Console.ReadLine();
+                    Console.ReadKey();
+                    return true;
+                }
             }
             else
             {
-                Console.Write("Opcion no valida"); registro2 = Console.ReadLine();
+                Console.WriteLine("Registro no encontrado");
                 Console.ReadKey();
                 return true;
             }
