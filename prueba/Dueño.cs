@@ -68,8 +68,10 @@ namespace prueba
                           where num.Registro >=0
                           orderby num.Fecha 
                           select num).ToArray();
+            
             foreach (Producto a in antiguo)
-                Console.WriteLine(a.Nombre + " " + a.Fecha);
+                
+                Console.WriteLine("Registro:"+a.Registro+"  Nombre:"+a.Nombre + "  Fecha:" + a.Fecha+"  Intercambio1:"+a.Obj1+"  Intercambio2:"+a.Obj2+"  Intercambio3:"+a.Obj3);
         }
         public void Ofertas()
         {

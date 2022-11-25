@@ -173,16 +173,36 @@ namespace prueba
         }
         static bool HacerTrueque(Dueño du)
         {
-            string coincidencia,registro1,registro2;
+            string coincidencia,registro1,registro2,confirmacion;
+            
         
             Console.WriteLine("////// Trueques //////");
-            Console.Write("Objeto a intercambio 3                 : "); coincidencia = Console.ReadLine();
+            du.BuscarProductoAntiguo();
+            
+            Console.Write("Ingrese Nombre y Numero de Registro para ver sus coincidencias de trueque.   Nombre:");coincidencia= Console.ReadLine();
+            Console.Write("Numero de Registro:");registro1= Console.ReadLine();
             du.HacerTrueque(coincidencia);
-            Console.Write("Seleccione registro                 : "); registro1 = Console.ReadLine();
-            Console.Write("Seleccione registro                 : "); registro2 = Console.ReadLine();
-            du.HacerTrueque2(registro1, registro2);
-            Console.ReadKey();
-            return true;
+            Console.Write("Ingrese Numero de Registro a cambiar:"); registro2 = Console.ReadLine();
+            Console.Write("¿Esta seguro de realizar el trueque?.Los registros cambiados seran eliminados.1-Confirmar 2-Cancelar");confirmacion= Console.ReadLine();
+            if (confirmacion.Equals("1"))
+            {
+              du.HacerTrueque2(registro1, registro2);
+              Console.ReadKey();
+              return true;
+              
+            }else if(confirmacion.Equals("2"))
+            {
+                Console.ReadKey();
+                return true;
+            }
+            else
+            {
+                Console.Write("Opcion no valida"); registro2 = Console.ReadLine();
+                Console.ReadKey();
+                return true;
+            }
+           
+            
         }
         static void CargarDatos(Dueño du)
         {
