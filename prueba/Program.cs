@@ -49,7 +49,7 @@ namespace prueba
                     return true;
                 case "4":
                     Console.Clear();
-                    //HacerTrueque(du);
+                    HacerTrueque(du);
                     return true;
                 case "5":
                     return false;
@@ -168,6 +168,19 @@ namespace prueba
         {
             Console.WriteLine("////// Ofertas //////");
             du.Ofertas();
+            Console.ReadKey();
+            return true;
+        }
+        static bool HacerTrueque(Dueño du)
+        {
+            string coincidencia,registro1,registro2;
+        
+            Console.WriteLine("////// Trueques //////");
+            Console.Write("Objeto a intercambio 3                 : "); coincidencia = Console.ReadLine();
+            du.HacerTrueque(coincidencia);
+            Console.Write("Seleccione registro                 : "); registro1 = Console.ReadLine();
+            Console.Write("Seleccione registro                 : "); registro2 = Console.ReadLine();
+            du.HacerTrueque2(registro1, registro2);
             Console.ReadKey();
             return true;
         }
